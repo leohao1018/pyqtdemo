@@ -4,7 +4,7 @@ from PyQt5.QtCore import QFile
 from PyQt5.QtCore import QIODevice
 from PyQt5.QtCore import QTextStream
 from PyQt5.QtWidgets import QMainWindow
-from loginapi.ui_window import Ui_Window
+from ui_window import Ui_Window
 import time
 
 
@@ -24,7 +24,19 @@ class SimpleWebkit(QMainWindow, Ui_Window):
 
     def finishLoading(self):
         try:
-            pass
+            time.sleep(2)
+            js_code = """
+                                    document.cookie
+                                   """
+            self.cookieStr = self.webView.page().mainFrame().evaluateJavaScript(js_code)
+            print('document_cookieStr: ' + self.cookieStr)
+
+            self.cookies = self.webView.page().networkAccessManager().cookieJar().allCookies()
+            cookie_str = ''
+            for cc in self.cookies:
+                cookie_str += (cc.name().data().decode() + '=' + cc.value().data().decode() + '; ')
+            print('cookieObject: ' + cookie_str)
+
         except Exception as e:
             print(e)
         finally:

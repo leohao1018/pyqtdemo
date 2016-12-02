@@ -10,13 +10,14 @@
         </list>
       </option>
     </inspection_tool>
-    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="false" level="WARNING" enabled_by_default="false">
       <option name="ignoredIdentifiers">
         <list>
           <option value="jquery_rc" />
           <option value="webkit.domtraversal.domtraversal.ui_window" />
           <option value="loginapi.simpleselector.ui_window" />
           <option value="manmanbuy.search_queue.ui_window" />
+          <option value="manmanbuy.simpleWebkit.*" />
         </list>
       </option>
     </inspection_tool>

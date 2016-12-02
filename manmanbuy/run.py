@@ -7,7 +7,8 @@ from flask import Flask
 from flask import request
 from PyQt5.QtWidgets import QApplication
 import sys
-from manmanbuy.simpleWebkit import SimpleWebkit
+from simpleWebkit import SimpleWebkit
+import time
 
 app = Flask(__name__)
 
@@ -30,7 +31,7 @@ def get_chinese_gbk(old):
         return new_str
 
     for str in old:
-        print(str)
+        # print(str)
         not_chinese_str = re.search("[a-zA-Z0-9]", str)
         if not_chinese_str:
             new_str += not_chinese_str.group(0)
@@ -51,13 +52,16 @@ def get_chinese_gbk(old):
 def lagou_init():
     search_param = request.args.get("search_param")
     search_param = get_chinese_gbk(search_param)
+    # print(search_param)
     do_search(search_param)
     return 'SearchDone'
 
 
+q_app = QApplication(sys.argv)
+
+
 @log
 def do_search(search_param):
-    q_app = QApplication(sys.argv)
     url = 'http://s.manmanbuy.com/Default.aspx?key=' + search_param
     win = SimpleWebkit(qApplication=q_app, url=url)
     win.show()
@@ -65,4 +69,4 @@ def do_search(search_param):
 
 
 if __name__ == '__main__':
-    app.run(port=5005)
+    app.run(host='0.0.0.0')

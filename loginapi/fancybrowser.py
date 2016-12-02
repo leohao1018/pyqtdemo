@@ -44,7 +44,7 @@
 
 from PyQt5.QtCore import QFile, QIODevice, Qt, QTextStream, QUrl
 from PyQt5.QtWidgets import (QAction, QApplication, QLineEdit, QMainWindow,
-        QSizePolicy, QStyle, QTextEdit)
+                             QSizePolicy, QStyle, QTextEdit)
 from PyQt5.QtNetwork import QNetworkProxyFactory, QNetworkRequest
 from PyQt5.QtWebKitWidgets import QWebPage, QWebView
 
@@ -74,7 +74,7 @@ class FancyBrowser(QMainWindow):
 
         self.locationEdit = QLineEdit(self)
         self.locationEdit.setSizePolicy(QSizePolicy.Expanding,
-                self.locationEdit.sizePolicy().verticalPolicy())
+                                        self.locationEdit.sizePolicy().verticalPolicy())
         self.locationEdit.returnPressed.connect(self.changeLocation)
 
         toolBar = self.addToolBar("Navigation")
@@ -93,19 +93,19 @@ class FancyBrowser(QMainWindow):
         effectMenu.addAction("Highlight all links", self.highlightAllLinks)
 
         self.rotateAction = QAction(
-                self.style().standardIcon(QStyle.SP_FileDialogDetailedView),
-                "Turn images upside down", self, checkable=True,
-                toggled=self.rotateImages)
+            self.style().standardIcon(QStyle.SP_FileDialogDetailedView),
+            "Turn images upside down", self, checkable=True,
+            toggled=self.rotateImages)
         effectMenu.addAction(self.rotateAction)
 
         toolsMenu = self.menuBar().addMenu("&Tools")
         toolsMenu.addAction("Remove GIF images", self.removeGifImages)
         toolsMenu.addAction("Remove all inline frames",
-                self.removeInlineFrames)
+                            self.removeInlineFrames)
         toolsMenu.addAction("Remove all object elements",
-                self.removeObjectElements)
+                            self.removeObjectElements)
         toolsMenu.addAction("Remove all embedded elements",
-                self.removeEmbeddedElements)
+                            self.removeEmbeddedElements)
         self.setCentralWidget(self.view)
 
     def viewSource(self):
@@ -218,6 +218,7 @@ class FancyBrowser(QMainWindow):
 
 if __name__ == '__main__':
     import sys
+
     app = QApplication(sys.argv)
     url = QUrl('https://www.taobao.com')
     browser = FancyBrowser(url)
