@@ -23,6 +23,7 @@ def log(func):
     return wrapper
 
 
+# 中文--> gbk --> hex()
 def get_chinese_gbk(old):
     new_str = ''
     if old is None or '' == old :
