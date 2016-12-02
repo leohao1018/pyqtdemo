@@ -219,7 +219,7 @@ class FancyBrowser(QMainWindow):
 if __name__ == '__main__':
     import sys
     app = QApplication(sys.argv)
-    url = QUrl('https://passport.lagou.com/login/login.html')
+    url = QUrl('https://www.taobao.com')
     browser = FancyBrowser(url)
     browser.show()
     sys.exit(app.exec_())

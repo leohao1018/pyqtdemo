@@ -16,6 +16,7 @@
           <option value="jquery_rc" />
           <option value="webkit.domtraversal.domtraversal.ui_window" />
           <option value="loginapi.simpleselector.ui_window" />
+          <option value="manmanbuy.search_queue.ui_window" />
         </list>
       </option>
     </inspection_tool>

@@ -9,15 +9,12 @@ import time
 
 
 class SimpleWebkit(QMainWindow, Ui_Window):
-    def __init__(self, parent=None, qApplication=None):
+    def __init__(self, parent=None, qApplication=None, url=None):
         self.cookieStr = ''
         self.cookies = ''
         self.q_app = qApplication
-
         super(SimpleWebkit, self).__init__(parent)
 
-        # url = 'https://passport.lagou.com/login/login.html'
-        url = 'https://login.taobao.com/member/login.jhtml'
         self.setupUi(self, url=url)
         self.webView.loadFinished.connect(self.finishLoading)
 
@@ -27,20 +24,9 @@ class SimpleWebkit(QMainWindow, Ui_Window):
 
     def finishLoading(self):
         try:
-            js_code = """
-                        document.cookie
-                       """
-            self.cookieStr = self.webView.page().mainFrame().evaluateJavaScript(js_code)
-            print('document_cookieStr: ' + self.cookieStr)
-
-            self.cookies = self.webView.page().networkAccessManager().cookieJar().allCookies()
-            cookie_str = ''
-            for cc in self.cookies:
-                cookie_str += (cc.name().data().decode() + '=' + cc.value().data().decode() + '; ')
-            print('cookieObject: ' + cookie_str)
-
+            pass
         except Exception as e:
             print(e)
         finally:
-            # self.q_app.exit()
+            self.q_app.exit()
             pass
